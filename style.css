@@ -16,7 +16,7 @@ a {
 	color: black;
 }
 
-ul {
+ul, ol {
 	list-style: none;
 }
 
@@ -52,7 +52,8 @@ nav > div {
 	text-align: center;
 }
 
-.edu-card {
+.edu-card, 
+.proj-card {
 	padding-left: 12px;
 	margin: 12px 0px;
 	border: 2px dashed black;
