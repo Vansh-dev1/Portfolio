@@ -11,6 +11,11 @@ h1, h2, h3 {
 	padding: 4px 0px;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 ul {
 	list-style: none;
 }
@@ -36,4 +41,8 @@ nav > div {
 .content-center {
 	display: flex;
 	justify-content: center;
+}
+
+.links > a {
+	margin: 0px 8px;
 }
