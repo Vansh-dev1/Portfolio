@@ -28,3 +28,12 @@ nav {
 nav > div {
 	padding: 0 8px;
 }
+
+.about-section {
+	padding: 16px 4px;
+}
+
+.content-center {
+	display: flex;
+	justify-content: center;
+}
