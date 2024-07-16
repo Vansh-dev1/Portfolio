@@ -1,0 +1,30 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	padding: 4px;
+}
+
+h1, h2, h3 {
+	padding: 4px 0px;
+}
+
+ul {
+	list-style: none;
+}
+
+nav {
+	margin-bottom: 8px;
+	padding: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 40%;
+	flex-wrap: wrap;
+}
+
+nav > div {
+	padding: 0 8px;
+}
