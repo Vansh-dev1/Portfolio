@@ -103,3 +103,9 @@ nav > div {
 .m-8 {
 	margin: 8px;
 }
+
+@media (max-width: 480px) {
+	.links span {
+		display: none;
+	}
+}
