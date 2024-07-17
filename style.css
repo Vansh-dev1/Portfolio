@@ -6,7 +6,21 @@
 	padding: 0px;
 }
 
+.light-theme {
+	--foreground-color: black;
+	--background-color: white;
+	--active-color: #cbcbcb;
+}
+
+.dark-theme {
+	--foreground-color: white;
+	--background-color: black;
+	--active-color: #1f1f1f;
+}
+
 body {
+	color: var(--foreground-color);
+	background-color: var(--background-color);
 	font-family: "Inter", sans-serif;
 	padding: 4px;
 }
@@ -18,7 +32,7 @@ h1, h2, h3 {
 
 a {
 	text-decoration: none;
-	color: black;
+	color: var(--foreground-color);
 }
 
 ul, ol {
@@ -61,13 +75,13 @@ nav > div {
 .proj-card {
 	padding-left: 12px;
 	margin: 12px 0px;
-	border: 2px dashed black;
+	border: 2px dashed var(--foreground-color);
 	border-radius: 12px;
 }
 
 .edu-card:hover, 
 .proj-card:hover {
-	background-color: #cbcbcb;
+	background-color: var(--active-color);
 }
 
 .proj-card li div  {
@@ -79,7 +93,7 @@ nav > div {
 }
 
 .proj-card a:hover {
-	color: black;
+	color: var(--foreground-color);
 }
 
 .m-2 {
