@@ -65,6 +65,11 @@ nav > div {
 	border-radius: 12px;
 }
 
+.edu-card:hover, 
+.proj-card:hover {
+	background-color: #cbcbcb;
+}
+
 .proj-card li div  {
 	margin: 8px 0px;
 }
