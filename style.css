@@ -83,5 +83,9 @@ nav > div {
 }
 
 .m-2 {
+	margin: 2px;
+}
+
+.m-8 {
 	margin: 8px;
 }
