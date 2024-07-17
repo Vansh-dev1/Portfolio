@@ -73,6 +73,10 @@ nav > div {
 	color: gray;
 }
 
+.proj-card a:hover {
+	color: black;
+}
+
 .m-2 {
 	margin: 8px;
 }
