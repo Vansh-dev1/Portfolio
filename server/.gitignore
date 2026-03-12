@@ -1,0 +1,18 @@
+# Environment variables - contains secrets, never push!
+.env
+.env.local
+.env.production
+ 
+# Dependencies - reinstall with npm install
+node_modules/
+ 
+# Logs
+npm-debug.log*
+nodemon-debug.log*
+*.log
+ 
+# Mac system files
+.DS_Store
+ 
+# Editor
+.vscode/
