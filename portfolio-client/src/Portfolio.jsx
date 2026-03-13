@@ -48,6 +48,7 @@ const PROJECTS = [
   },
 ];
 
+const roles    = ["Full Stack Developer", "MERN Enthusiast", "B.TECH Student", "Problem Solver"];
 /* ─── Main Component ──────────────────────────────────────────────────────── */
 export default function Portfolio() {
   const [active, setActive]               = useState("Home");
@@ -59,7 +60,7 @@ export default function Portfolio() {
   const [sending, setSending]             = useState(false);
   const [formError, setFormError]         = useState("");
 
-  const roles    = ["Full Stack Developer", "MERN Enthusiast", "B.TECH Student", "Problem Solver"];
+  
   const roleIdx  = useRef(0);
   const charIdx  = useRef(0);
   const deleting = useRef(false);
