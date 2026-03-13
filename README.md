@@ -2,7 +2,7 @@
 
 A modern, full-stack developer portfolio built with the **MERN stack** (without MongoDB — React frontend + Node/Express backend). Features a dark terminal-inspired UI, animated components, project showcases, and a working contact form powered by Resend.
 
-**🌐 Live Demo:** [https://portfolio-henna-two-lhyf882c33.vercel.app/]
+**🌐 Live Demo:** [https://iamvansh.vercel.app/]
 
 ---
 
