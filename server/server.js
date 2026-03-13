@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 5000;
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
-  methods: ["POST"],
+  origin: "*",
+  methods: ["POST", "GET"],
 }));
 app.use(express.json());
 
@@ -107,7 +107,7 @@ app.post("/api/contact", async (req, res) => {
 
 // ─── Health check ─────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", timestamp: new Date().toISOString() });
+  res.json({ status: "ok" });
 });
 
 // ─── Start ────────────────────────────────────────────────────────────────────
