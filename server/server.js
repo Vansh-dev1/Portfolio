@@ -1,10 +1,11 @@
 const express = require("express");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
+const { Resend } = require("resend");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors({
@@ -13,29 +14,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ─── Nodemailer Transporter ───────────────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,   // your Gmail: vansh.lunagariya123@gmail.com
-    pass: process.env.EMAIL_PASS,   // 16-char Gmail App Password
-  },
-});
-
-// Verify transporter on startup
-transporter.verify((error) => {
-  if (error) {
-    console.error("❌ Mail transporter error:", error.message);
-  } else {
-    console.log("✅ Mail transporter ready");
-  }
-});
-
 // ─── Contact Route ────────────────────────────────────────────────────────────
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Basic validation
   if (!name?.trim() || !email?.trim() || !message?.trim()) {
     return res.status(400).json({ success: false, error: "All fields are required." });
   }
@@ -47,9 +29,9 @@ app.post("/api/contact", async (req, res) => {
 
   try {
     // Mail to YOU (notification)
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "vansh.lunagariya123@gmail.com",
       replyTo: email,
       subject: `📬 New message from ${name} — Portfolio`,
       html: `
@@ -71,8 +53,8 @@ app.post("/api/contact", async (req, res) => {
     });
 
     // Auto-reply to SENDER
-    await transporter.sendMail({
-      from: `"Vansh Lunagariya" <${process.env.EMAIL_USER}>`,
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: email,
       subject: `Thanks for reaching out, ${name}! 👋`,
       html: `
@@ -107,8 +89,18 @@ app.post("/api/contact", async (req, res) => {
 
 // ─── Health check ─────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok" });
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
+
+// ─── Keep alive (prevents Render free tier from sleeping) ────────────────────
+setInterval(() => {
+  const url = process.env.RENDER_URL;
+  if (url) {
+    fetch(`${url}/api/health`)
+      .then(() => console.log("✅ Server kept alive"))
+      .catch(() => {});
+  }
+}, 14 * 60 * 1000);
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
