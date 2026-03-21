@@ -29,6 +29,7 @@ const PROJECTS = [
       "Responsive React frontend with dynamic routing",
     ],
     github: "https://github.com/Vansh-dev1/CampusRide",
+    live: "https://campusride.vercel.app",
   },
   {
     name: "BlogX",
@@ -327,9 +328,18 @@ export default function Portfolio() {
                 style={{ borderColor: selectedProject.color, color: selectedProject.color, fontSize: 13 }}>
                 View on GitHub ↗
               </a>
-              <button className="btn-primary" style={{ background: `linear-gradient(135deg, ${selectedProject.color}, ${selectedProject.color}bb)`, fontSize: 13 }}>
-                Live Demo ↗
-              </button>
+              {selectedProject.live ? (
+                <a href={selectedProject.live} target="_blank" rel="noopener noreferrer"
+                  className="btn-primary"
+                  style={{ background: `linear-gradient(135deg, ${selectedProject.color}, ${selectedProject.color}bb)`, fontSize: 13, textDecoration: "none" }}>
+                  Live Demo ↗
+                </a>
+              ) : (
+                <button className="btn-primary" disabled
+                  style={{ background: `linear-gradient(135deg, ${selectedProject.color}, ${selectedProject.color}bb)`, fontSize: 13, opacity: 0.5 }}>
+                  Coming Soon
+                </button>
+              )}
             </div>
           </div>
         </div>
